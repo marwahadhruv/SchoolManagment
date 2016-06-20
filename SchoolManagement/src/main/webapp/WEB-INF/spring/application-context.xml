@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- Bean Definition go here -->
+	<bean id="loginBO" class="com.business.LoginBO">
+		<property name="loginModel" ref="loginModel" />
+		<property name="loginDao" ref="loginDao" />
+	</bean>
+	<bean id="loginModel" class="com.Model.LoginModel">
+	</bean>
+	<bean id="loginDao" class="com.dao.LoginDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="welcomeBO" class="com.business.WelcomeBO">
+		<property name="welcomeModel" ref="welcomeModel" />
+	</bean>
+	<bean id="welcomeModel" class="com.Model.WelcomeModel">
+	</bean>
+	<bean id="welcomeDao" class="com.dao.WelcomeDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="selectClassBO" class="com.business.SelectClassBO">
+		<property name="selectClassModel" ref="selectClassModel" />
+	</bean>
+	<bean id="selectClassModel" class="com.Model.SelectClassModel">
+	</bean>
+	<bean id="selectClassDao" class="com.dao.SelectClassDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="attendanceBO" class="com.business.AttendanceBO">
+		<property name="attendanceModel" ref="attendanceModel" />
+	</bean>
+	<bean id="attendanceModel" class="com.Model.AttendanceModel">
+	</bean>
+	<bean id="attendanceDao" class="com.dao.AttendanceDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="registerBO" class="com.business.RegisterBO">
+		<property name="registerModel" ref="registerModel" />
+	</bean>
+	<bean id="registerModel" class="com.Model.RegisterModel">
+	</bean>
+	<bean id="registerDao" class="com.dao.RegisterDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="changeClassBO" class="com.business.ChangeClassBO">
+		<property name="changeClassModel" ref="changeClassModel" />
+	</bean>
+	<bean id="changeClassModel" class="com.Model.ChangeClassModel">
+	</bean>
+	<bean id="changeClassDao" class="com.dao.ChangeClassDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    <bean id="transactionManager"
+    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	
+</beans>

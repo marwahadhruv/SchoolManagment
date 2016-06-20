@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/beans    
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+        
+
+        
+       <!--  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+              destroy-method="close" 
+              p:driverClassName="com.mysql.jdbc.Driver"
+              p:url="jdbc:mysql//localhost:3306/attendance" 
+              p:username="root" 
+              p:password="" /> -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/attendance"/>
+      <property name="username" value="root"/>
+      <property name="password" value=""/>
+  </bean>
+
+       <bean id="sessionFactory"
+              class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+              <property name="dataSource" ref="dataSource" />
+
+              <property name="packagesToScan">
+                     <list>
+                           <value>com.data</value>
+                     </list>
+              </property>
+              <property name="hibernateProperties">
+                     <props>
+                           <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                           <!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop> -->
+                           <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                           <!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+                           <!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
+                           <prop key="hibernate.show_sql">true</prop>
+                     </props>
+              </property>
+       </bean>
+       
+        
+       
+      <!--   <bean id="webLogicXADataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql//localhost:3306/attendance"/>
+      <property name="username" value="root"/>
+      <property name="password" value=""/>
+   </bean>
+    
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+   		<property name="dataSource" ref="webLogicXADataSource"></property>
+   		<property name="packagesToScan" value="com.data"></property>
+
+   		  <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>              
+            </props>
+        </property>
+    	
+   </bean> -->
+  
+    <!-- <bean id="webLogicXADataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="#[csa.db.driver]"/>
+        <property name="url" value="#[csa.db.url]"/>
+        <property name="username" value="#[csa.db.username]"/>
+        <property name="password" value="#[csa.db.password]"/>
+        <property name="properties">
+            <props>
+                <prop key="driverClassName">
+                    #[csa.db.driver]
+                </prop>
+                <prop key="url">
+                    #[csa.db.url]
+                </prop>
+                <prop key="username">
+                    #[csa.db.username]
+                </prop>
+                <prop key="password">
+                    #[csa.db.password]
+                </prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="webLogicXADataSourceInvoice"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="#[csa.db.driver]"/>
+        <property name="url" value="#[csa.db.url]"/>
+        <property name="username" value="#[csa.db.usernameInvoice]"/>
+        <property name="password" value="#[csa.db.passwordInvoice]"/>
+        <property name="properties">
+            <props>
+                <prop key="driverClassName">
+                    #[csa.db.driver]
+                </prop>
+                <prop key="url">
+                    #[csa.db.url]
+                </prop>
+                <prop key="username">
+                    #[csa.db.username]
+                </prop>
+                <prop key="password">
+                    #[csa.db.password]
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+        <property name="url" value="ldap://PSORALDAP:389" />
+        <property name="base" value="cn=OracleContext,dc=lexisnexis,dc=com" />
+        <property name="userName" value="username" />
+        <property name="password" value="password" /> 
+    </bean>
+    <bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+        <constructor-arg ref="contextSource" />
+    </bean>
+
+    <jee:jndi-lookup id="webLogicXADataSource" resource-ref="false"
+        environment-ref="localJNDIProperties"
+        jndi-name="java:comp/env/jdbc/EmployeeDB" />
+    
+
+    <bean id="localJNDIProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="driverClassName">
+                    #[csa.db.driver]
+                </prop>
+                <prop key="url">
+                    #[csa.db.url]
+                </prop>
+                <prop key="username">
+                    #[csa.db.username]
+                </prop>
+                <prop key="password">
+                    #[csa.db.password]
+                </prop>
+            </props>
+        </property>
+    </bean> 
+     <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>tool.properties</value>
+            </list>
+        </property>
+        <property name="placeholderPrefix" value="#[" />
+        <property name="placeholderSuffix" value="]" />
+    </bean> 
+            
+        Create transaction manager
+        <tx:annotation-driven mode="aspectj"/>
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <property name="dataSource" ref="webLogicXADataSource" /> 
+    </bean>
+
+    <aop:config>
+
+        <aop:pointcut id="csaServiceOperation" expression="execution(* com.lxnx.fab.ce.icce.inventoryRoutingInvoice.service.*.*(..)) " />
+        <aop:pointcut id="csaLoggingOperation" expression="execution(* com.lxnx.fab.ce.icce.inventoryRoutingInvoice.service.*Service.*(..)) || execution(* com.lxnx.fab.ce.icce.inventoryRoutingInvoice.dao.*DAO.*(..))" />
+        
+        <aop:advisor advice-ref="csaTxAdvice" pointcut-ref="csaServiceOperation" />
+        <aop:advisor advice-ref="casLgAdvice" pointcut-ref="csaLoggingOperation" /> 
+    </aop:config>  
+    
+    <bean id="casLgAdvice" class="com.lxnx.fab.ce.icce.inventoryRoutingInvoice.common.LoggingAdvice" />
+    <tx:advice id="csaTxAdvice" >
+        <tx:attributes>
+            <tx:method name="log*" propagation="REQUIRES_NEW" />
+            <tx:method name="retrieve*" read-only="true" />
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="*" read-only="false" rollback-for="ArithmeticException"/>
+            <tx:method name="*" />
+        </tx:attributes>
+    </tx:advice> -->
+</beans>
