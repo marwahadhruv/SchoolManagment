@@ -35,7 +35,7 @@ public class WelcomeDao {
 	public List<Teacher> validateTeacher(WelcomeModel welcomeModel){
 		Criteria criteria = getSession().createCriteria(Teacher.class);
 		criteria.add(Restrictions.eq("school_Id", welcomeModel.getSchoolId()));
-		criteria.add(Restrictions.eq("teacher_Username", welcomeModel.getTeacherUserId()));
+		criteria.add(Restrictions.eq("teacher_Username", welcomeModel.getTeacherUserName()));
 		criteria.add(Restrictions.eq("teacher_Password", welcomeModel.getTeacherPassword()));
 		return criteria.list();
 	}

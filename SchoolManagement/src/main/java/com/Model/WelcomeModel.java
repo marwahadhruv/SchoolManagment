@@ -3,15 +3,10 @@ package com.Model;
  
 
 public class WelcomeModel {
-	private String teacherUserId;
+	private String teacherUserName;
 	private String teacherPassword;
 	private long schoolId;
-	public String getTeacherUserId() {
-		return teacherUserId;
-	}
-	public void setTeacherUserId(String teacherUserId) {
-		this.teacherUserId = teacherUserId;
-	}
+
 	public String getTeacherPassword() {
 		return teacherPassword;
 	}
@@ -23,6 +18,12 @@ public class WelcomeModel {
 	}
 	public void setSchoolId(long schoolId) {
 		this.schoolId = schoolId;
+	}
+	public String getTeacherUserName() {
+		return teacherUserName;
+	}
+	public void setTeacherUserName(String teacherUserName) {
+		this.teacherUserName = teacherUserName;
 	}
 
 	
