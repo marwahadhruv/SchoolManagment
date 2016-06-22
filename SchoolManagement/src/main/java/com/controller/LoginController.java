@@ -19,8 +19,8 @@ import com.data.School;
 public class LoginController {
 	
 	//Dependency Injection using annotation
-		@Autowired
-		private LoginBO loginBO;
+	@Autowired
+	private LoginBO loginBO;
  
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView login(ModelMap model) {

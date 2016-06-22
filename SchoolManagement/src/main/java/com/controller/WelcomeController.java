@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.Model.SchoolModel;
+import com.Model.WelcomeModel;
 import com.business.WelcomeBO;
  
 @Controller
@@ -30,15 +31,20 @@ public class WelcomeController {
 	}
 
 
-	@RequestMapping(method = RequestMethod.GET)
-    public String login(@ModelAttribute("schoolAttribute") SchoolModel schoolModel, HttpServletRequest request) {
+	@RequestMapping(value = "",method = RequestMethod.GET)
+    public String welcomeTeacher(@ModelAttribute("schoolAttribute") SchoolModel schoolModel, HttpServletRequest request) {
+		request.getSession().setAttribute("schoolId", schoolModel.getSchoolId());
     	//schoolModel.addAttribute("greeting", "Hello World from Spring 4 MVC");
-        return "login";
+        return "welcome";
+    }
+	
+	@RequestMapping(value = "/validateTeacher", method = RequestMethod.GET)
+    public String validateTeacher(@ModelAttribute("welcomeAttribute") WelcomeModel welcomeModel, HttpServletRequest request) {
+		welcomeModel.setSchoolId((Long) request.getSession().getAttribute("schoolId"));
+		welcomeBO.validateTeacher(welcomeModel);
+    	//schoolModel.addAttribute("greeting", "Hello World from Spring 4 MVC");
+        return "welcome";
     }
  
-   /* @RequestMapping(value="/", method = RequestMethod.GET)
-    public String sayHelloAgain(ModelMap model) {
-        model.addAttribute("greeting", "Hello World Again, from Spring 4 MVC");
-        return "welcome";
-    }*/
+	
 }

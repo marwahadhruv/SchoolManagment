@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%@page import="com.Model.SchoolModel"%>       
+<%@page import="com.Model.WelcomeModel"%>       
        
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -13,40 +13,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Welcome</title>
 </head>
 <body>
 <form method="GET" id="school" name="school"
-			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute">
+			action="/SchoolManagement/Welcome/validateTeacher" modelAttribute="teacherAttribute">
 <table>
 <tr>
 <td>
 	<label>User Name:</label>
 </td>
 <td>
-<select id="schoolId" name="schoolId" onchange="" >
-	<c:forEach var="schoolId" items="${listSchools}">
-          <option value="${schoolId.school_Id}" title="${schoolId.school_Name}"><c:out value="${schoolId.school_Name}"/></option>
-     </c:forEach>
-</select>
+<input type="text" id ="teacherUserName" name="teacherUserName"/>
 <td>
-<c:set var="loginModel.schoolId" scope="session"  value="${param.schoolId}" />
+<c:set var="welcomeModel.teacherUserName" scope="session"  value="${param.teacherUserName}" />
 </tr>
 <tr>
 <td>
 	<label>Password:</label>
 </td>
 <td>
-<select id="schoolId" name="schoolId" onchange="" >
-	<c:forEach var="schoolId" items="${listSchools}">
-          <option value="${schoolId.school_Id}" title="${schoolId.school_Name}"><c:out value="${schoolId.school_Name}"/></option>
-     </c:forEach>
-</select>
+<input type="text" id ="teacherPassword" name="teacherPassword"/>
 <td>
-<c:set var="loginModel.schoolId" scope="session"  value="${param.schoolId}" />
+<c:set var="welcomeModel.teacherPassword" scope="session"  value="${param.teacherPassword}" />
 </tr>
 <tr>
-<td><input type="submit" id="loginAdmin" name = "loginAdmin" />
+<td><input type="submit" id="loginTeacher" name = "loginTeacher" />
 </td>
 <td><input type="button" id="loginTeacher" name = "loginTeacher"/></td>
 </tr>

@@ -20,6 +20,7 @@
 	
 	<bean id="welcomeBO" class="com.business.WelcomeBO">
 		<property name="welcomeModel" ref="welcomeModel" />
+		<property name="welcomeDao" ref="welcomeDao" />
 	</bean>
 	<bean id="welcomeModel" class="com.Model.WelcomeModel">
 	</bean>
@@ -29,6 +30,7 @@
 	
 	<bean id="selectClassBO" class="com.business.SelectClassBO">
 		<property name="selectClassModel" ref="selectClassModel" />
+		<property name="selectClassDao" ref="selectClassDao" />
 	</bean>
 	<bean id="selectClassModel" class="com.Model.SelectClassModel">
 	</bean>
@@ -38,6 +40,7 @@
 	
 	<bean id="attendanceBO" class="com.business.AttendanceBO">
 		<property name="attendanceModel" ref="attendanceModel" />
+		<property name="attendanceDao" ref="attendanceDao" />
 	</bean>
 	<bean id="attendanceModel" class="com.Model.AttendanceModel">
 	</bean>
@@ -47,6 +50,7 @@
 	
 	<bean id="registerBO" class="com.business.RegisterBO">
 		<property name="registerModel" ref="registerModel" />
+		<property name="registerDao" ref="registerDao" />
 	</bean>
 	<bean id="registerModel" class="com.Model.RegisterModel">
 	</bean>
@@ -56,6 +60,7 @@
 	
 	<bean id="changeClassBO" class="com.business.ChangeClassBO">
 		<property name="changeClassModel" ref="changeClassModel" />
+		<property name="changeClassDao" ref="changeClassDao" />
 	</bean>
 	<bean id="changeClassModel" class="com.Model.ChangeClassModel">
 	</bean>

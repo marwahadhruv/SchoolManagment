@@ -1,6 +1,5 @@
 package com.data;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +10,7 @@ import javax.persistence.Table;
 @Table(name="School")
 public class School {
 	
-	@Id
-	
+	@Id	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long school_Id;
 	private String school_Name;
