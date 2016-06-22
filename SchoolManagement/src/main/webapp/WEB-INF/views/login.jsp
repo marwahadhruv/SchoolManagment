@@ -14,14 +14,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
+<style>
+
+body {
+background: #C70039;
+}
+
+.a {
+position:absolute;
+top:10%; 
+left:80%;
+color: Black;
+}
+
+@font-face {
+font-family: 'Bebas Neue';
+font-style: normal;
+font-weight: normal;
+src: local('Bebas Neue'), url('BebasNeue.woff') format('woff');
+}
+
+.maintext{
+font-family: 'Bebas Neue'
+}
+
+
+</style>
 </head>
 <body> 
+<img src="C:\Users\dhruv\workspaceMars\SchoolManagement\IMAGES\EDUCATION.JPG" alt="EDUCATION View" style="width:100%;height:60%;">
 <form method="GET" id="school" name="school"
-			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute">
+			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute" class ="a" >
 <table>
 <tr>
 <td>
-	<label>School:</label>
+	<label >School:</label>
 </td>
 <td>
 <select id="schoolId" name="schoolId" onchange="" >
