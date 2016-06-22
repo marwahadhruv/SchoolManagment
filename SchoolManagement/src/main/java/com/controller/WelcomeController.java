@@ -34,7 +34,6 @@ public class WelcomeController {
 	@RequestMapping(value = "",method = RequestMethod.GET)
     public String welcomeTeacher(@ModelAttribute("schoolAttribute") SchoolModel schoolModel, HttpServletRequest request) {
 		request.getSession().setAttribute("schoolId", schoolModel.getSchoolId());
-    	//schoolModel.addAttribute("greeting", "Hello World from Spring 4 MVC");
         return "welcome";
     }
 	
@@ -42,7 +41,6 @@ public class WelcomeController {
     public String validateTeacher(@ModelAttribute("welcomeAttribute") WelcomeModel welcomeModel, HttpServletRequest request) {
 		welcomeModel.setSchoolId((Long) request.getSession().getAttribute("schoolId"));
 		welcomeBO.validateTeacher(welcomeModel);
-    	//schoolModel.addAttribute("greeting", "Hello World from Spring 4 MVC");
         return "welcome";
     }
  
