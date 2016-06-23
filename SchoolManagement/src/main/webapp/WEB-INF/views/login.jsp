@@ -29,6 +29,12 @@ left:80%;
 color: Black;
 }
 
+.b{
+position:absolute;
+color:White;
+}
+
+
 @font-face {
 font-family: 'Bebas Neue';
 font-style: normal;
@@ -44,7 +50,7 @@ font-family: 'Bebas Neue'
 </style> -->
 </head>
 <body>
-<label class="a">MY SCHOOL ROSTER</label> 
+<label style="top:10%;position:absolute;color:white;left:10%; font-family:'Bebas Neue'; font-size: 500% ">MY SCHOOL ROSTER</label> 
 <img src="<c:url value="/resources/images/Education.jpg" />" alt="EDUCATION View" style="width:100%;height:60%;">
 <form method="GET" id="school" name="school"
 			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute" class ="a" >

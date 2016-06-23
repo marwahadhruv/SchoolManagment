@@ -1,15 +1,19 @@
 package com.business;
 
+import java.util.List;
+
 import com.Model.WelcomeModel;
 import com.dao.WelcomeDao;
+import com.data.Teacher;
 
 public class WelcomeBO {
 
 	private WelcomeModel welcomeModel;
 	private WelcomeDao welcomeDao;
 	
-	public void validateTeacher(WelcomeModel welcomeModel){
-		welcomeDao.validateTeacher(welcomeModel);
+	public List<Teacher> validateTeacher(WelcomeModel welcomeModel){
+		return welcomeDao.validateTeacher(welcomeModel);
+		
 	}
 	
 
