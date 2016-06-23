@@ -43,7 +43,8 @@ font-family: 'Bebas Neue'
 
 </style> -->
 </head>
-<body> 
+<body>
+<label class="a">MY SCHOOL ROSTER</label> 
 <img src="<c:url value="/resources/images/Education.jpg" />" alt="EDUCATION View" style="width:100%;height:60%;">
 <form method="GET" id="school" name="school"
 			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute" class ="a" >
