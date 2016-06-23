@@ -12,9 +12,11 @@
 
 <html>
 <head>
+<link href="<c:url value="/resources/style/main.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/js/login.js" />"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
-<style>
+<!-- <style>
 
 body {
 background: #C70039;
@@ -39,10 +41,10 @@ font-family: 'Bebas Neue'
 }
 
 
-</style>
+</style> -->
 </head>
 <body> 
-<img src="C:\Users\dhruv\workspaceMars\SchoolManagement\IMAGES\EDUCATION.JPG" alt="EDUCATION View" style="width:100%;height:60%;">
+<img src="<c:url value="/resources/images/Education.jpg" />" alt="EDUCATION View" style="width:100%;height:60%;">
 <form method="GET" id="school" name="school"
 			action="/SchoolManagement/Welcome" modelAttribute="schoolAttribute" class ="a" >
 <table>
@@ -51,7 +53,7 @@ font-family: 'Bebas Neue'
 	<label >School:</label>
 </td>
 <td>
-<select id="schoolId" name="schoolId" onchange="" >
+<select id="schoolId" name="schoolId" onchange="" style="height:80% ;width: 300%" >
 	<c:forEach var="schoolId" items="${listSchools}">
           <option value="${schoolId.school_Id}" title="${schoolId.school_Name}"><c:out value="${schoolId.school_Name}"/></option>
      </c:forEach>
