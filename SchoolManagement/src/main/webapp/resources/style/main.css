@@ -1,0 +1,23 @@
+body {
+background: #C70039;
+}
+
+.a {
+position:absolute;
+top:30%; 
+left:60%;
+color: Black;
+font-family: 'Bebas Neue';
+font-size: 300%;
+}
+
+@font-face {
+font-family: 'Bebas Neue';
+font-style: normal;
+font-weight: normal;
+src: local('Bebas Neue'), url('BebasNeue.woff') format('woff');
+}
+
+.maintext{
+font-family: 'Bebas Neue'
+}
