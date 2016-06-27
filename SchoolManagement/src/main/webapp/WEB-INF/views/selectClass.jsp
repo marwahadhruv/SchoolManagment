@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%@page import="com.Model.WelcomeModel"%>       
+<%@page import="com.Model.SelectClassModel"%>       
        
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -16,8 +16,8 @@
 <title>Welcome</title>
 </head>
 <body>
-<form method="GET" id="school" name="school"
-			action="/SchoolManagement/Welcome/validateTeacher" modelAttribute="teacherAttribute">
+<form method="GET" id="selClass" name="selClass"
+			action="/SchoolManagement/SelectClass/select" modelAttribute="teacherAttribute">
 <table>
 <tr>
 <td>

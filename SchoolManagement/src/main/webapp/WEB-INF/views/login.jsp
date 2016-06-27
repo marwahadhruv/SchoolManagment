@@ -50,6 +50,7 @@ font-family: 'Bebas Neue'
 </style> -->
 </head>
 <body>
+
 <label style="top:10%;position:absolute;color:white;left:10%; font-family:'Bebas Neue'; font-size: 500% ">MY SCHOOL ROSTER</label> 
 <img src="<c:url value="/resources/images/Education.jpg" />" alt="EDUCATION View" style="width:100%;height:60%;">
 <form method="GET" id="school" name="school"
@@ -75,5 +76,6 @@ font-family: 'Bebas Neue'
 </tr>
 </table>
 </form>
+
 </body>
 </html>
